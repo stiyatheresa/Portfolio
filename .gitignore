@@ -4,3 +4,6 @@ Thumbs.db
 node_modules/
 .vscode/
 .idea/
+
+# raw originals (246MB of MP4s) stay local
+assets - orginals/

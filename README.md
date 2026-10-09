@@ -12,7 +12,13 @@ python3 -m http.server 8080
 
 ## Images
 
-All images in `assets/` are low-res crops (596px source) pulled from the Canva deck's public page previews. Replace any of them with the original file under the same name for a sharper site.
+`about-1`, `about-2` and all reel videos/posters come from the originals folder (kept local, git-ignored). The rest are low-res crops (596px source) from the Canva deck's public page previews. Replace any of them with the original file under the same name for a sharper site.
+
+To re-encode reels from new originals (needs ffmpeg):
+
+```bash
+ffmpeg -i IN.MP4 -c:v libx264 -preset slow -crf 20 -profile:v high -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart assets/reel-XX-N.mp4
+```
 
 | File(s) | Used for |
 |---------|----------|
@@ -21,7 +27,8 @@ All images in `assets/` are low-res crops (596px source) pulled from the Canva d
 | `strip-1..4.jpg` | Experience image strip |
 | `exp-1..4.jpg` | My experience collages |
 | `project-01..03.jpg` | Project screenshot clusters |
-| `reel-01-1..3.jpg`, `reel-02-1..4.jpg`, `reel-03-1..4.jpg` | Reels under each project |
+| `reel-01-1..3.mp4`, `reel-02-1..4.mp4`, `reel-03-1..4.mp4` | Reel videos (hover to play, click for sound). 720×1280 H.264 CRF 20, re-encoded from the originals |
+| `reel-*.jpg` | Poster frames for the reel videos |
 | `podcast-01..02.jpg` | Podcast thumbnails |
 | `work-01..06.jpg` | Works I Did collage |
 

@@ -260,6 +260,41 @@
     });
   });
 
+  /* ---------- Reels: hover to play, click for sound, autoplay in view on touch ---------- */
+  const reels = $$(".reel[data-video]");
+  const allVideos = reels.map((f) => $("video", f)).filter(Boolean);
+  const muteOthers = (keep) => allVideos.forEach((v) => { if (v !== keep && !v.muted) { v.muted = true; v.closest(".reel").classList.remove("is-sound"); } });
+  reels.forEach((fig) => {
+    const v = $("video", fig);
+    const btn = $(".reel__sound", fig);
+    if (!v) return;
+    v.addEventListener("play", () => fig.classList.add("is-playing"));
+    v.addEventListener("pause", () => fig.classList.remove("is-playing"));
+    v.addEventListener("error", () => fig.classList.add("is-missing"));
+    if (finePointer) {
+      fig.addEventListener("pointerenter", () => { v.play().catch(() => {}); });
+      fig.addEventListener("pointerleave", () => { if (v.muted) v.pause(); });
+    }
+    const toggleSound = (e) => {
+      e.preventDefault(); e.stopPropagation();
+      v.muted = !v.muted;
+      fig.classList.toggle("is-sound", !v.muted);
+      if (!v.muted) { muteOthers(v); v.play().catch(() => {}); }
+    };
+    if (btn) btn.addEventListener("click", toggleSound);
+    fig.addEventListener("click", (e) => { if (e.target === btn) return; if (v.paused) v.play().catch(() => {}); else toggleSound(e); });
+  });
+  if (!finePointer && "IntersectionObserver" in window && allVideos.length) {
+    const vio = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        const v = en.target;
+        if (en.isIntersecting && en.intersectionRatio >= 0.6) v.play().catch(() => {});
+        else if (!v.paused) v.pause();
+      });
+    }, { threshold: [0, 0.6] });
+    allVideos.forEach((v) => vio.observe(v));
+  }
+
   /* ---------- Smooth anchor scroll with nav offset ---------- */
   $$('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
