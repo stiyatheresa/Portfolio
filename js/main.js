@@ -271,9 +271,10 @@
     v.addEventListener("play", () => fig.classList.add("is-playing"));
     v.addEventListener("pause", () => fig.classList.remove("is-playing"));
     v.addEventListener("error", () => fig.classList.add("is-missing"));
+    const stop = () => { v.pause(); try { v.currentTime = 0; } catch (_) {} };
     if (finePointer) {
       fig.addEventListener("pointerenter", () => { v.play().catch(() => {}); });
-      fig.addEventListener("pointerleave", () => { if (v.muted) v.pause(); });
+      fig.addEventListener("pointerleave", stop);
     }
     const toggleSound = (e) => {
       e.preventDefault(); e.stopPropagation();
@@ -283,13 +284,14 @@
     };
     if (btn) btn.addEventListener("click", toggleSound);
     fig.addEventListener("click", (e) => { if (e.target === btn) return; if (v.paused) v.play().catch(() => {}); else toggleSound(e); });
+    v.addEventListener("ended", stop);
   });
   if (!finePointer && "IntersectionObserver" in window && allVideos.length) {
     const vio = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
         const v = en.target;
         if (en.isIntersecting && en.intersectionRatio >= 0.6) v.play().catch(() => {});
-        else if (!v.paused) v.pause();
+        else if (!v.paused) { v.pause(); try { v.currentTime = 0; } catch (_) {} }
       });
     }, { threshold: [0, 0.6] });
     allVideos.forEach((v) => vio.observe(v));
