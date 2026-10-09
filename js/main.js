@@ -11,15 +11,6 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  /* ---------- Loader curtain ---------- */
-  const revealPage = () => document.documentElement.classList.add("is-loaded");
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => setTimeout(revealPage, reduceMotion ? 0 : 650));
-  } else {
-    window.addEventListener("load", () => setTimeout(revealPage, 650));
-  }
-  setTimeout(revealPage, 2500); // safety net
-
   /* ---------- Custom cursor ---------- */
   const cursor = $(".cursor");
   if (cursor && finePointer && !reduceMotion) {
@@ -181,6 +172,17 @@
     counters.forEach(runCounter);
   }
 
+  /* ---------- Nav colour follows section theme ---------- */
+  const themed = $$("[data-theme]");
+  if ("IntersectionObserver" in window && themed.length) {
+    const tio = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) document.body.dataset.nav = en.target.dataset.theme;
+      });
+    }, { rootMargin: "-10% 0px -85% 0px" });
+    themed.forEach((s) => tio.observe(s));
+  }
+
   /* ---------- Active nav + hide on scroll down ---------- */
   const nav = $(".nav");
   const navLinks = $$(".nav__links a");
@@ -205,8 +207,6 @@
       const goingDown = y > lastY && y > 120;
       nav.classList.toggle("is-hidden", goingDown);
     }
-    // subtle grid parallax
-    document.documentElement.style.setProperty("--grid-shift", `${-(y * 0.04)}px`);
     lastY = y;
     ticking = false;
   };

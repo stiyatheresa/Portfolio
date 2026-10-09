@@ -10,21 +10,23 @@ Open `index.html` in a browser, or serve locally:
 python3 -m http.server 8080
 ```
 
-## Add images
+## Images
 
-Drop files with these names into `assets/`. Placeholders show until the file exists.
+All images in `assets/` are low-res crops (596px source) pulled from the Canva deck's public page previews. Replace any of them with the original file under the same name for a sharper site.
 
-| File | Used for |
-|------|----------|
-| `assets/hero-photo.png` | Cover photo (hero blob) |
-| `assets/project-01.jpg` | Project 01 preview |
-| `assets/project-02.jpg` | Project 02 (RideMagic) preview |
-| `assets/project-03.jpg` | Project 03 (Mithra Digital) preview |
-| `assets/podcast-01.jpg`, `assets/podcast-02.jpg` | Podcast tiles |
-| `assets/work-01.jpg` … `assets/work-04.jpg` | Works I Did tiles |
+| File(s) | Used for |
+|---------|----------|
+| `hero-photo.png` | Cover photo blob |
+| `about-1..3.jpg` | About me collage |
+| `strip-1..4.jpg` | Experience image strip |
+| `exp-1..4.jpg` | My experience collages |
+| `project-01..03.jpg` | Project screenshot clusters |
+| `reel-01-1..3.jpg`, `reel-02-1..4.jpg`, `reel-03-1..4.jpg` | Reels under each project |
+| `podcast-01..02.jpg` | Podcast thumbnails |
+| `work-01..06.jpg` | Works I Did collage |
 
 ## Structure
 
-- `index.html` — all sections (hero, contents, about, experience, projects, works, contact)
+- `index.html` — deck order: cover · content · introduce · about · work experience · stats · my experience · projects · project 01–03 · podcast · works · contact · thank you
 - `css/style.css` — design tokens, layout, animations
 - `js/main.js` — cursor, tooltips, tilt, reveal, counters, nav, copy-to-clipboard
