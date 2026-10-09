@@ -260,38 +260,76 @@
     });
   });
 
-  /* ---------- Reels: hover to play, click for sound, autoplay in view on touch ---------- */
+  /* ---------- Reels: hover to play, global sound toggle (default on) ---------- */
   const reels = $$(".reel[data-video]");
   const allVideos = reels.map((f) => $("video", f)).filter(Boolean);
-  const muteOthers = (keep) => allVideos.forEach((v) => { if (v !== keep && !v.muted) { v.muted = true; v.closest(".reel").classList.remove("is-sound"); } });
+  let soundOn = true;
+  try { soundOn = localStorage.getItem("reelSound") !== "off"; } catch (_) {}
+  let gestureSeen = false;
+
+  const applySound = () => {
+    allVideos.forEach((v) => {
+      v.muted = !soundOn;
+      v.closest(".reel").classList.toggle("is-sound", soundOn);
+    });
+    document.body.classList.toggle("reels-muted", !soundOn);
+    try { localStorage.setItem("reelSound", soundOn ? "on" : "off"); } catch (_) {}
+  };
+  const stopReel = (v) => { v.pause(); try { v.currentTime = 0; } catch (_) {} };
+  const playReel = async (v) => {
+    const fig = v.closest(".reel");
+    allVideos.forEach((o) => { if (o !== v && !o.paused) stopReel(o); });
+    v.muted = !soundOn;
+    try {
+      await v.play();
+      fig.classList.remove("is-blocked");
+    } catch (_) {
+      // Browser blocked audio before any user click: play muted, hint for sound.
+      if (!soundOn) return;
+      v.muted = true;
+      fig.classList.add("is-blocked");
+      try { await v.play(); } catch (__) {}
+    }
+  };
+  const toggleSound = () => { soundOn = !soundOn; applySound(); };
+
   reels.forEach((fig) => {
     const v = $("video", fig);
     const btn = $(".reel__sound", fig);
     if (!v) return;
     v.addEventListener("play", () => fig.classList.add("is-playing"));
     v.addEventListener("pause", () => fig.classList.remove("is-playing"));
+    v.addEventListener("ended", () => stopReel(v));
     v.addEventListener("error", () => fig.classList.add("is-missing"));
-    const stop = () => { v.pause(); try { v.currentTime = 0; } catch (_) {} };
     if (finePointer) {
-      fig.addEventListener("pointerenter", () => { v.play().catch(() => {}); });
-      fig.addEventListener("pointerleave", stop);
+      fig.addEventListener("pointerenter", () => playReel(v));
+      fig.addEventListener("pointerleave", () => stopReel(v));
     }
-    const toggleSound = (e) => {
-      e.preventDefault(); e.stopPropagation();
-      v.muted = !v.muted;
-      fig.classList.toggle("is-sound", !v.muted);
-      if (!v.muted) { muteOthers(v); v.play().catch(() => {}); }
-    };
-    if (btn) btn.addEventListener("click", toggleSound);
-    fig.addEventListener("click", (e) => { if (e.target === btn) return; if (v.paused) v.play().catch(() => {}); else toggleSound(e); });
-    v.addEventListener("ended", stop);
+    if (btn) btn.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); toggleSound(); });
+    fig.addEventListener("click", (e) => {
+      if (e.target === btn) return;
+      if (v.paused) playReel(v); else toggleSound();
+    });
   });
+  applySound();
+
+  // First real click anywhere unlocks audio: unmute whatever is playing.
+  document.addEventListener("pointerdown", () => {
+    if (gestureSeen) return;
+    gestureSeen = true;
+    if (!soundOn) return;
+    allVideos.forEach((v) => {
+      const fig = v.closest(".reel");
+      if (fig.classList.contains("is-blocked")) { fig.classList.remove("is-blocked"); v.muted = false; }
+    });
+  }, { capture: true });
+
   if (!finePointer && "IntersectionObserver" in window && allVideos.length) {
     const vio = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
         const v = en.target;
-        if (en.isIntersecting && en.intersectionRatio >= 0.6) v.play().catch(() => {});
-        else if (!v.paused) { v.pause(); try { v.currentTime = 0; } catch (_) {} }
+        if (en.isIntersecting && en.intersectionRatio >= 0.6) playReel(v);
+        else if (!v.paused) stopReel(v);
       });
     }, { threshold: [0, 0.6] });
     allVideos.forEach((v) => vio.observe(v));

@@ -447,6 +447,8 @@ body[data-nav="cream"] .nav__cta { box-shadow: 0 6px 0 var(--blue); }
 .reel.is-sound .reel__sound { background: var(--yellow); }
 .reel:hover .reel__sound, .reel.is-playing .reel__sound, .reel.is-sound .reel__sound { opacity: 1; transform: scale(1); }
 .reel.is-playing figcaption { transform: none; opacity: 1; }
+.reel.is-blocked figcaption::after { content: " · click for sound"; font-weight: 500; }
+.reel.is-blocked .reel__sound::before { content: "🔇"; }
 .reels__badge { right: -6px; bottom: -6px; transform: rotate(-6deg); }
 @media (max-width: 860px) {
   .project__row, .project__row--2 { grid-template-columns: 1fr; }
