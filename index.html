@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stiya Theresa Justin — Creative Portfolio 2026</title>
+  <meta name="description" content="Content Creator, Social Media Manager and Content Strategist. Creative portfolio of Stiya Theresa Justin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23003ef1'/%3E%3Ctext x='50' y='68' font-size='54' text-anchor='middle' fill='%23fefaf3' font-family='Georgia' font-style='italic'%3Ep%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- ───────────── Loader curtain ───────────── -->
+<div class="curtain" aria-hidden="true">
+  <div class="curtain__panel curtain__panel--top"></div>
+  <div class="curtain__panel curtain__panel--bottom"></div>
+  <div class="curtain__word"><span>port</span><span>folio</span></div>
+</div>
+
+<!-- ───────────── Custom cursor ───────────── -->
+<div class="cursor" aria-hidden="true">
+  <div class="cursor__dot"></div>
+  <div class="cursor__ring"></div>
+</div>
+<div class="tooltip" role="tooltip" aria-hidden="true"></div>
+
+<!-- ───────────── Nav ───────────── -->
+<header class="nav">
+  <a class="nav__brand" href="#top" data-tip="Back to top">
+    <span class="nav__brand-mark">p</span>
+    <span class="nav__brand-text">Stiya</span>
+  </a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#introduce" data-section="introduce"><sup>01</sup> Introduce</a>
+    <a href="#experience" data-section="experience"><sup>02</sup> Experience</a>
+    <a href="#projects" data-section="projects"><sup>03</sup> Projects</a>
+    <a href="#contact" data-section="contact"><sup>04</sup> Contact</a>
+  </nav>
+  <a class="nav__cta magnetic" href="#contact">Let’s talk <span class="arrow">→</span></a>
+</header>
+
+<main id="top">
+
+<!-- ───────────── HERO ───────────── -->
+<section class="hero" id="hero">
+  <div class="hero__side-label">Creative Portfolio</div>
+
+  <div class="hero__stage">
+    <!-- Yellow bracket frame (draws itself in) -->
+    <svg class="hero__frame" viewBox="0 0 1000 560" fill="none" aria-hidden="true" preserveAspectRatio="none">
+      <path class="hero__frame-path" d="M60 40 L940 20 L955 520 L45 540 Z" />
+      <circle class="hero__frame-dot" cx="60" cy="40" r="7"/>
+      <circle class="hero__frame-dot" cx="940" cy="20" r="7"/>
+      <circle class="hero__frame-dot" cx="955" cy="520" r="7"/>
+      <circle class="hero__frame-dot" cx="45" cy="540" r="7"/>
+    </svg>
+
+    <h1 class="hero__title" aria-label="Portfolio">
+      <span class="hero__line"><span class="hero__word" data-text="port">port</span></span>
+      <span class="hero__line hero__line--2"><span class="hero__word" data-text="folio">folio</span></span>
+    </h1>
+
+    <!-- Sparkles -->
+    <svg class="sparkle sparkle--1" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 C22 14 26 18 40 20 C26 22 22 26 20 40 C18 26 14 22 0 20 C14 18 18 14 20 0Z"/></svg>
+    <svg class="sparkle sparkle--2" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 C22 14 26 18 40 20 C26 22 22 26 20 40 C18 26 14 22 0 20 C14 18 18 14 20 0Z"/></svg>
+    <svg class="sparkle sparkle--3" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 C22 14 26 18 40 20 C26 22 22 26 20 40 C18 26 14 22 0 20 C14 18 18 14 20 0Z"/></svg>
+
+    <!-- 2026 seal -->
+    <div class="seal" data-tip="Portfolio edition 2026">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <polygon points="50,2 58,14 72,8 74,23 89,24 84,38 97,45 87,55 95,68 80,71 79,86 65,82 58,96 50,86 42,96 35,82 21,86 20,71 5,68 13,55 3,45 16,38 11,24 26,23 28,8 42,14"/>
+      </svg>
+      <span>2026</span>
+    </div>
+
+    <!-- Green scalloped badge -->
+    <div class="scallop" data-tip="What I do">
+      <svg viewBox="0 0 200 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M22 10 Q40 2 58 10 Q78 2 96 10 Q116 2 134 10 Q154 2 172 10 Q192 22 188 42 Q198 62 188 82 Q192 102 172 112 Q154 118 134 112 Q116 118 96 112 Q78 118 58 112 Q40 118 22 112 Q4 102 10 82 Q0 62 10 42 Q4 22 22 10Z"/>
+      </svg>
+      <span>Content Creator &amp;<br>Social Media<br>Management</span>
+    </div>
+
+    <!-- Photo blob -->
+    <figure class="blob" data-tilt>
+      <div class="blob__inner">
+        <img src="assets/hero-photo.png" alt="Stiya Theresa Justin" onerror="this.classList.add('is-missing')">
+        <div class="blob__placeholder">Drop <code>assets/hero-photo.png</code></div>
+      </div>
+      <svg class="blob__tri" viewBox="0 0 40 40" aria-hidden="true"><polygon points="2,2 38,20 2,38"/></svg>
+    </figure>
+
+    <!-- Name pill -->
+    <a class="pill pill--name magnetic" href="#introduce" data-tip="Meet me ↓">Stiya Theresa Justin</a>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span>scroll</span>
+    <i></i>
+  </div>
+</section>
+
+<!-- ───────────── CONTENTS ───────────── -->
+<section class="contents" id="contents">
+  <div class="section-head">
+    <span class="eyebrow">Index</span>
+    <h2 class="display">Content</h2>
+  </div>
+
+  <p class="contents__intro reveal">Hi, I’m Stiya. A content creator and marketer who loves turning ideas into content, stories and campaigns people <em>actually</em> want to engage with.</p>
+
+  <ol class="toc">
+    <li class="toc__item reveal" style="--i:0">
+      <a href="#introduce">
+        <span class="toc__num">01</span>
+        <span class="toc__title">Introduce</span>
+        <span class="toc__desc">Content + Social + Marketing. I’ve worked across social media, content strategy, video creation and digital marketing, from managing brands to creating campaigns and presenting content.</span>
+        <span class="toc__arrow">→</span>
+      </a>
+    </li>
+    <li class="toc__item reveal" style="--i:1">
+      <a href="#experience">
+        <span class="toc__num">02</span>
+        <span class="toc__title">Work Experience</span>
+        <span class="toc__desc">Social media strategy, content creation, campaigns and paid marketing across brands and industries.</span>
+        <span class="toc__arrow">→</span>
+      </a>
+    </li>
+    <li class="toc__item reveal" style="--i:2">
+      <a href="#projects">
+        <span class="toc__num">03</span>
+        <span class="toc__title">Projects</span>
+        <span class="toc__desc">Ideas I’ve brought to life. From social media campaigns and short-form videos.</span>
+        <span class="toc__arrow">→</span>
+      </a>
+    </li>
+    <li class="toc__item reveal" style="--i:3">
+      <a href="#contact">
+        <span class="toc__num">04</span>
+        <span class="toc__title">Contact</span>
+        <span class="toc__desc">Let’s create something. Got an idea, brand or project in mind? Let’s talk.</span>
+        <span class="toc__arrow">→</span>
+      </a>
+    </li>
+  </ol>
+</section>
+
+<!-- ───────────── Marquee divider ───────────── -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Creative Portfolio</span><i>✦</i><span>Content Creator</span><i>✦</i><span>Social Media Manager</span><i>✦</i><span>Content Strategist</span><i>✦</i>
+    <span>Creative Portfolio</span><i>✦</i><span>Content Creator</span><i>✦</i><span>Social Media Manager</span><i>✦</i><span>Content Strategist</span><i>✦</i>
+  </div>
+</div>
+
+<!-- ───────────── INTRODUCE / ABOUT ───────────── -->
+<section class="about" id="introduce">
+  <div class="section-head">
+    <span class="eyebrow"><sup>01</sup> introduce</span>
+    <h2 class="display">About me<span class="bang">!</span></h2>
+  </div>
+
+  <div class="about__grid">
+    <div class="about__card reveal">
+      <div class="about__tag">about me</div>
+      <p class="about__lead">Hi, I’m Stiya. I’m a <mark data-tip="Reels, scripts, carousels, blogs">Content Creator</mark>, <mark data-tip="Calendars, publishing, community, insights">Social Media Manager</mark>, and <mark data-tip="Research, positioning, campaign planning">Content Strategist</mark> who loves turning ideas into content people actually want to stop and engage with.</p>
+      <p>From reels and scripts to content strategies, campaigns, and social media management, I combine creativity with strategy to craft purposeful content, whether that’s building awareness, starting conversations, or driving action.</p>
+      <p class="about__quote"><span class="hl">I don’t just create content.<br>I think about why it should exist.</span></p>
+    </div>
+
+    <aside class="about__aside reveal" style="--i:1">
+      <div class="sticker sticker--yellow" data-tip="Yes, really">Content Creator</div>
+      <div class="sticker sticker--lime">Creative Portfolio</div>
+      <div class="sticker sticker--outline">2026</div>
+      <svg class="sparkle sparkle--about" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 C22 14 26 18 40 20 C26 22 22 26 20 40 C18 26 14 22 0 20 C14 18 18 14 20 0Z"/></svg>
+    </aside>
+  </div>
+</section>
+
+<!-- ───────────── EXPERIENCE ───────────── -->
+<section class="experience" id="experience">
+  <div class="section-head">
+    <span class="eyebrow"><sup>02</sup> my experience</span>
+    <h2 class="display">Work<br>Experience</h2>
+    <span class="section-head__side">Core</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat reveal" style="--i:0" data-tip="Since 2024">
+      <span class="stat__num"><span data-count="2">0</span>+</span>
+      <span class="stat__label">Years of Experience</span>
+    </div>
+    <div class="stat reveal" style="--i:1" data-tip="Across industries">
+      <span class="stat__num"><span data-count="10">0</span>+</span>
+      <span class="stat__label">Brands Worked With</span>
+    </div>
+    <p class="stats__text reveal" style="--i:2">From social media strategy and content creation to campaigns and paid marketing, I’ve worked across different brands and industries, turning ideas into content that connects with the right audience.</p>
+  </div>
+
+  <div class="roles">
+    <article class="role reveal" style="--i:0">
+      <div class="role__head">
+        <h3 class="role__org"><span data-tip="Bengaluru · Digital agency">Mithra Digital</span><small>Bengaluru</small></h3>
+        <span class="role__dates pill pill--small">2025 — Present</span>
+      </div>
+      <p class="role__title">Social Media Content Specialist</p>
+      <p class="role__desc">Created social media strategies, content calendars, Reels, scripts and campaigns for multiple brands. Worked on audience research, competitor analysis, Meta Ads, Instagram Insights and content performance testing.</p>
+      <ul class="chips">
+        <li data-tip="Paid social on Facebook & Instagram">Meta Ads</li>
+        <li data-tip="Native analytics, reach & engagement">Instagram Insights</li>
+        <li data-tip="Planning what goes out, when">Content Calendars</li>
+        <li data-tip="A/B testing hooks, formats, timing">Performance Testing</li>
+      </ul>
+    </article>
+
+    <article class="role reveal" style="--i:1">
+      <div class="role__head">
+        <h3 class="role__org"><span data-tip="Thrissur · Study-abroad consultancy">Irish Expert</span><small>Thrissur</small></h3>
+        <span class="role__dates pill pill--small">2025 — Present</span>
+      </div>
+      <p class="role__title">Content Strategist</p>
+      <p class="role__desc">Planned and created digital content including Reels, carousels, blogs, articles and campaigns. Worked on audience and competitor research, content strategy and maintaining consistent brand communication.</p>
+      <ul class="chips">
+        <li data-tip="Short-form vertical video">Reels</li>
+        <li data-tip="Multi-slide swipe posts">Carousels</li>
+        <li data-tip="Long-form written content">Blogs &amp; Articles</li>
+        <li data-tip="One voice, every channel">Brand Communication</li>
+      </ul>
+    </article>
+
+    <article class="role reveal" style="--i:2">
+      <div class="role__head">
+        <h3 class="role__org"><span data-tip="Independent · Multiple industries">Freelance</span><small>Remote</small></h3>
+        <span class="role__dates pill pill--small">2024 — Present</span>
+      </div>
+      <p class="role__title">Social Media Content Creator</p>
+      <p class="role__desc">Created social media content for different brands across industries, including Reels, captions, static posts, campaigns and content calendars. Handled ideas from concept to final content.</p>
+      <ul class="chips">
+        <li data-tip="Hooks that stop the scroll">Captions</li>
+        <li data-tip="Designed single-image posts">Static Posts</li>
+        <li data-tip="Themed multi-post pushes">Campaigns</li>
+        <li data-tip="Idea → script → shoot → edit → post">Concept to Final</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- ───────────── PROJECTS ───────────── -->
+<section class="projects" id="projects">
+  <div class="section-head">
+    <span class="eyebrow"><sup>03</sup> projects</span>
+    <h2 class="display">Projects</h2>
+    <span class="section-head__side">Ideas I’ve brought to life</span>
+  </div>
+
+  <div class="project-list">
+
+    <article class="project reveal" style="--i:0">
+      <div class="project__media" data-tilt>
+        <img src="assets/project-01.jpg" alt="Project 01 preview" onerror="this.classList.add('is-missing')">
+        <div class="project__placeholder"><span>01</span><small>Drop <code>assets/project-01.jpg</code></small></div>
+        <span class="project__badge">Project 01</span>
+      </div>
+      <div class="project__body">
+        <span class="eyebrow">Social Media Manager</span>
+        <h3 class="project__title">Social Media Management &amp; Content Creation</h3>
+        <p>Planned and created social media content including Reels, carousels, static posts and campaign creatives. Developed content ideas based on the brand, audience and current social trends.</p>
+        <p class="project__note">From content planning to publishing, I handled the process of turning brand goals into consistent and engaging social media content.</p>
+        <ul class="chips chips--lime">
+          <li data-tip="What to say, to whom, why">Content Strategy</li>
+          <li data-tip="Day-to-day channel ownership">Social Media Management</li>
+          <li data-tip="Hooks, beats, on-screen text">Reel Concepts &amp; Scripts</li>
+          <li data-tip="Captions, CTAs, campaign copy">Copywriting</li>
+          <li data-tip="Monthly planning grids">Content Calendars</li>
+          <li data-tip="What worked, what didn’t, why">Performance Analysis</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project project--flip reveal" style="--i:1">
+      <div class="project__media" data-tilt>
+        <img src="assets/project-02.jpg" alt="RideMagic project preview" onerror="this.classList.add('is-missing')">
+        <div class="project__placeholder"><span>02</span><small>Drop <code>assets/project-02.jpg</code></small></div>
+        <span class="project__badge">Project 02</span>
+      </div>
+      <div class="project__body">
+        <span class="eyebrow">Social Media Manager</span>
+        <h3 class="project__title">RideMagic <span class="muted">— Launch Presence</span></h3>
+        <p>Built RideMagic’s social media presence around its launch, creating engaging content for the brand, products, and biking community. Worked on content ideas, Reels, campaigns and day-to-day social media communication.</p>
+        <ul class="chips chips--lime">
+          <li data-tip="Launch narrative & pillars">Content Strategy</li>
+          <li data-tip="Community replies, DMs, comments">Social Media Management</li>
+          <li data-tip="Product & rider-first video">Reel Concepts &amp; Scripts</li>
+          <li data-tip="Brand voice for bikers">Copywriting</li>
+          <li data-tip="Pre-launch → launch → sustain">Content Calendars</li>
+          <li data-tip="Reach, saves, follows">Performance Analysis</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project reveal" style="--i:2">
+      <div class="project__media" data-tilt>
+        <img src="assets/project-03.jpg" alt="Mithra Digital project preview" onerror="this.classList.add('is-missing')">
+        <div class="project__placeholder"><span>03</span><small>Drop <code>assets/project-03.jpg</code></small></div>
+        <span class="project__badge">Project 03</span>
+      </div>
+      <div class="project__body">
+        <span class="eyebrow">Social Media Manager</span>
+        <h3 class="project__title">Mithra Digital <span class="muted">— Brand Awareness</span></h3>
+        <p>Managed social media content for Mithra Digital, creating engaging posts, Reels and campaigns to build brand awareness and grow its online presence.</p>
+        <ul class="chips chips--lime">
+          <li data-tip="Agency showing its own work">Brand Awareness</li>
+          <li data-tip="Behind-the-scenes & tips">Reels</li>
+          <li data-tip="Themed content pushes">Campaigns</li>
+          <li data-tip="Follower & reach growth">Online Presence</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ───────────── PODCAST + WORKS ───────────── -->
+<section class="works" id="works">
+  <div class="section-head">
+    <span class="eyebrow">more</span>
+    <h2 class="display">Podcast <span class="amp">&amp;</span> Works I Did</h2>
+  </div>
+
+  <div class="gallery">
+    <figure class="tile tile--wide reveal" style="--i:0" data-kind="Podcast">
+      <img src="assets/podcast-01.jpg" alt="Podcast" onerror="this.classList.add('is-missing')">
+      <div class="tile__placeholder"><span>Podcast</span><small>assets/podcast-01.jpg</small></div>
+      <figcaption>Podcast</figcaption>
+    </figure>
+    <figure class="tile reveal" style="--i:1" data-kind="Podcast">
+      <img src="assets/podcast-02.jpg" alt="Podcast" onerror="this.classList.add('is-missing')">
+      <div class="tile__placeholder"><span>Podcast</span><small>assets/podcast-02.jpg</small></div>
+      <figcaption>Podcast</figcaption>
+    </figure>
+    <figure class="tile reveal" style="--i:2" data-kind="Works">
+      <img src="assets/work-01.jpg" alt="Work sample" onerror="this.classList.add('is-missing')">
+      <div class="tile__placeholder"><span>Work</span><small>assets/work-01.jpg</small></div>
+      <figcaption>Works I Did</figcaption>
+    </figure>
+    <figure class="tile reveal" style="--i:3" data-kind="Works">
+      <img src="assets/work-02.jpg" alt="Work sample" onerror="this.classList.add('is-missing')">
+      <div class="tile__placeholder"><span>Work</span><small>assets/work-02.jpg</small></div>
+      <figcaption>Works I Did</figcaption>
+    </figure>
+    <figure class="tile tile--tall reveal" style="--i:4" data-kind="Works">
+      <img src="assets/work-03.jpg" alt="Work sample" onerror="this.classList.add('is-missing')">
+      <div class="tile__placeholder"><span>Work</span><small>assets/work-03.jpg</small></div>
+      <figcaption>Works I Did</figcaption>
+    </figure>
+    <figure class="tile reveal" style="--i:5" data-kind="Works">
+      <img src="assets/work-04.jpg" alt="Work sample" onerror="this.classList.add('is-missing')">
+      <div class="tile__placeholder"><span>Work</span><small>assets/work-04.jpg</small></div>
+      <figcaption>Works I Did</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ───────────── CONTACT ───────────── -->
+<section class="contact" id="contact">
+  <div class="section-head">
+    <span class="eyebrow"><sup>04</sup> contact</span>
+    <h2 class="display">Let’s create<br>something.</h2>
+  </div>
+
+  <div class="contact__grid">
+    <div class="contact__text reveal">
+      <p class="contact__lead">Got an idea, brand, or project in mind?<br><strong>Let’s talk.</strong></p>
+
+      <ul class="contact__list">
+        <li>
+          <button class="copy" data-copy="+91 9778346316" data-tip="Click to copy">
+            <span class="copy__label">Phone</span>
+            <span class="copy__value">9778346316</span>
+          </button>
+        </li>
+        <li>
+          <button class="copy" data-copy="stiyatheresa@gmail.com" data-tip="Click to copy">
+            <span class="copy__label">Email</span>
+            <span class="copy__value">stiyatheresa@gmail.com</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="socials">
+        <span class="eyebrow">Let’s connect</span>
+        <a class="social magnetic" href="https://www.instagram.com/stiya.t_j/" target="_blank" rel="noopener" data-tip="Instagram · @stiya.t_j">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>
+          stiya.t_j
+        </a>
+        <a class="social magnetic" href="https://www.linkedin.com/in/stiyatheresa" target="_blank" rel="noopener" data-tip="LinkedIn · stiyatheresa">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM10 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg>
+          linkedin.com/in/stiyatheresa
+        </a>
+      </div>
+    </div>
+
+    <div class="thanks reveal" style="--i:1" data-tilt>
+      <span class="thanks__word thanks__word--1">Thank</span>
+      <span class="thanks__word thanks__word--2">you</span>
+      <svg class="sparkle sparkle--thanks" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0 C22 14 26 18 40 20 C26 22 22 26 20 40 C18 26 14 22 0 20 C14 18 18 14 20 0Z"/></svg>
+      <span class="sticker sticker--yellow thanks__sticker">Content Creator</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <span>© 2026 Stiya Theresa Justin</span>
+  <span class="footer__mid">Creative Portfolio</span>
+  <a href="#top" class="footer__top" data-tip="Back to top">↑ top</a>
+</footer>
+
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
