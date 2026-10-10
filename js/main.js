@@ -11,6 +11,50 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
+/* ---------- Glowing cursor trail ---------- */
+if (finePointer && !reduceMotion) {
+  const glow = document.createElement("div");
+  glow.className = "cursor-glow";
+  glow.setAttribute("aria-hidden", "true");
+
+  glow.innerHTML = `
+    <svg width="100%" height="100%">
+      <path class="cursor-glow__line"></path>
+    </svg>
+  `;
+
+  document.body.appendChild(glow);
+
+  const path = glow.querySelector("path");
+  const points = [];
+  const maxPoints = 28;
+  let frameId = null;
+
+  window.addEventListener("pointermove", (e) => {
+    points.push({ x: e.clientX, y: e.clientY });
+
+    if (points.length > maxPoints) points.shift();
+
+    if (frameId === null) {
+      frameId = requestAnimationFrame(() => {
+        const d = points.map((p, i) => {
+          if (i === 0) return `M ${p.x} ${p.y}`;
+          return `L ${p.x} ${p.y}`;
+        }).join(" ");
+
+        path.setAttribute("d", d);
+        path.style.opacity = "1";
+        frameId = null;
+      });
+    }
+  }, { passive: true });
+
+  window.addEventListener("pointerleave", () => {
+    points.length = 0;
+    path.setAttribute("d", "");
+  });
+}
+
   /* ---------- Custom cursor ---------- */
   const cursor = $(".cursor");
   if (cursor && finePointer && !reduceMotion) {
@@ -351,7 +395,7 @@
       window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
       history.replaceState(null, "", id);
     });
-  });
+});
 
   /* ---------- Sparkle trail on hero title ---------- */
   const heroTitle = $(".hero__title");
