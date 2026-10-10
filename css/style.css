@@ -1,5 +1,5 @@
 /* ============================================================
-   Stiya Theresa Justin — Creative Portfolio 2026
+   Stiya Theresa Justin — Portfolio 2026
    Follows the Canva deck: blue divider slides between cream
    content pages. Palette sampled from the deck.
    ============================================================ */
@@ -74,13 +74,6 @@ main, header, footer { position: relative; z-index: 1; }
   background-position: calc(var(--cell) * 0.5) calc(var(--cell) * 0.5);
   padding: clamp(72px, 10vw, 140px) var(--gutter);
 }
-.slide__side {
-  position: absolute; left: calc(var(--gutter) * 0.45); top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-  white-space: nowrap; opacity: .85; pointer-events: none;
-}
-@media (max-width: 640px) { .slide__side { display: none; } }
 
 /* ---------- Type ---------- */
 .page__title {
@@ -493,21 +486,58 @@ body[data-nav="cream"] .nav__cta { box-shadow: 0 6px 0 var(--blue); }
 @media (max-width: 760px) { .podcast__grid { grid-template-columns: 1fr; } }
 
 /* ============================================================
-   13. WORKS I DID
+   13. WORKS I DID — deck p18 collage + p19 row
    ============================================================ */
-.works__grid { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; align-items: end; max-width: 1100px; margin: 0 auto; padding-bottom: 36px; }
-.work { position: relative; border-radius: 14px; overflow: hidden; --tx: 0; --ty: 0; transform: perspective(800px) rotateX(var(--ty)) rotateY(var(--tx)) rotate(var(--r, 0deg)); transition: transform .15s ease-out; box-shadow: 0 30px 50px -30px rgba(0, 20, 100, .5); }
-.work img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
-.work--tall img { aspect-ratio: 9 / 16; }
-.works__badge { position: absolute; right: 0; bottom: 0; transform: rotate(-6deg); }
-@media (max-width: 760px) { .works__grid { grid-template-columns: repeat(3, 1fr); } }
+.works { padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(40px, 6vw, 80px); }
+.works__stage { position: relative; max-width: 1100px; margin: 0 auto; aspect-ratio: 596 / 335; }
+.work {
+  position: absolute; border-radius: 14px; overflow: hidden; background: var(--blue-ink);
+  box-shadow: 0 30px 50px -28px rgba(0, 20, 100, .5);
+  --tx: 0; --ty: 0;
+  transform: perspective(900px) rotateX(var(--ty)) rotateY(var(--tx)) rotate(var(--r, 0deg));
+  transition: transform .15s ease-out, box-shadow .4s ease;
+}
+.work:hover { z-index: 5; box-shadow: 0 40px 60px -28px rgba(0, 20, 100, .6); }
+.work img { width: 100%; height: 100%; object-fit: cover; }
+/* p18 positions, % of a 596x335 slide */
+.work--a { left: 16%; top: 10%; width: 17%; height: 42%; }
+.work--b { left: 35%; top: 10%; width: 29.5%; height: 79%; z-index: 2; }
+.work--c { left: 68%; top: 4%; width: 17%; height: 45%; --r: 8deg; }
+.work--d { left: 15%; top: 53%; width: 17%; height: 39%; --r: -8deg; }
+.work--e { left: 72%; top: 47%; width: 20%; height: 52%; --r: 10deg; }
+.works__pill { position: absolute; transform: rotate(-6deg); z-index: 3; }
+.works__pill--collage { left: 59%; top: 86%; }
+/* p19 positions */
+.work--f { left: 9.5%; top: 10%; width: 22%; height: 79%; }
+.work--g { left: 33.5%; top: 10%; width: 28.5%; height: 79%; z-index: 2; }
+.work--h { left: 65.5%; top: 10%; width: 22%; height: 79%; }
+.works__pill--row { left: 60%; top: 88%; }
+@media (max-width: 640px) {
+  .works__stage { aspect-ratio: auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .works__stage .deco { display: none; }
+  .work { position: static; width: auto; height: auto; aspect-ratio: 9 / 16; --r: 0deg; }
+  .works__pill { position: static; justify-self: end; grid-column: 1 / -1; transform: none; }
+}
 
 /* ============================================================
-   15. FINALE / CONTACT
+   15. THANK YOU (p21) + 16. CONTACT DETAILS (p22)
    ============================================================ */
-.finale__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: center; max-width: 1200px; margin: 0 auto; }
-.finale__text .page__title { margin-bottom: 20px; }
-.contact__list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; }
+.thankyou { min-height: 70svh; display: grid; place-items: center; }
+.thankyou__inner { position: relative; text-align: center; padding: 40px 0 60px; }
+.thankyou__word {
+  font-family: var(--serif); font-style: italic; font-weight: 400; line-height: .85;
+  font-size: clamp(80px, 15vw, 200px); letter-spacing: -.03em; color: var(--blue);
+  display: inline-flex; flex-direction: column; align-items: flex-start;
+}
+.thankyou__you { align-self: flex-end; padding-right: .1em; background: linear-gradient(transparent 62%, var(--yellow) 62%, var(--yellow) 92%, transparent 92%); }
+.thankyou__lead { margin-top: 28px; font-size: clamp(16px, 1.6vw, 20px); line-height: 1.5; color: var(--blue); }
+.thankyou__lead strong { font-weight: 700; }
+.thankyou__badge { right: -8%; bottom: 0; transform: rotate(-8deg); }
+.details__grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: center; max-width: 1100px; margin: 0 auto; }
+.details__text { position: relative; padding-top: 48px; }
+.details__badge { left: -6px; top: 0; transform: rotate(-8deg); }
+.details__text .page__title { margin-bottom: 8px; }
+.contact__list { display: flex; flex-direction: column; gap: 10px; margin: 28px 0; max-width: 520px; }
 .copy { display: flex; align-items: baseline; gap: 18px; width: 100%; text-align: left; padding: 14px 18px; border-radius: 16px; border: 2px solid var(--blue); transition: background .3s ease, color .3s ease, transform .3s var(--ease-out); }
 .copy:hover { background: var(--blue); color: var(--cream); transform: translateX(6px); }
 .copy.is-copied { background: var(--lime); color: var(--blue); border-color: var(--lime); }
@@ -515,21 +545,9 @@ body[data-nav="cream"] .nav__cta { box-shadow: 0 6px 0 var(--blue); }
 .copy__value { font-weight: 700; font-size: clamp(16px, 1.6vw, 22px); letter-spacing: -.01em; }
 .socials { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .socials__label { width: 100%; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
-.thanks {
-  position: relative; aspect-ratio: 1; max-width: 520px; width: 100%; margin-left: auto;
-  border-radius: 32px; background: var(--blue); color: var(--cream);
-  display: grid; place-content: center; --tx: 0; --ty: 0;
-  transform: perspective(900px) rotateX(var(--ty)) rotateY(var(--tx)); transition: transform .15s ease-out;
-  background-image:
-    linear-gradient(to right, var(--grid-blue) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-blue) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-.thanks .frame { inset: 8%; width: 84%; height: 84%; }
-.thanks__w1, .thanks__w2 { position: relative; font-family: var(--serif); font-style: italic; line-height: .85; font-size: clamp(64px, 10vw, 130px); }
-.thanks__w2 { padding-left: 1.1em; color: var(--yellow); }
-.thanks__badge { left: 24px; bottom: 24px; transform: rotate(-6deg); }
-@media (max-width: 860px) { .finale__grid { grid-template-columns: 1fr; } .thanks { margin: 0 auto; } }
+.details__phone { display: block; width: min(100%, 300px); margin: 0 auto; --tx: 0; --ty: 0; transform: perspective(900px) rotateX(var(--ty)) rotateY(var(--tx)) rotate(6deg); transition: transform .15s ease-out; }
+.details__phone:hover { transform: rotate(0deg); }
+@media (max-width: 860px) { .details__grid { grid-template-columns: 1fr; } .details__phone { width: min(70%, 260px); } }
 
 /* ---------- Footer ---------- */
 .footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 28px var(--gutter); background: var(--blue); color: var(--cream); border-top: 1px solid rgba(255, 255, 255, .22); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }

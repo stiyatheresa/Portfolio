@@ -28,14 +28,14 @@ ffmpeg -i IN.MP4 -c:v libx264 -preset slow -crf 20 -profile:v high -pix_fmt yuv4
 | `exp-1..4.jpg` | My experience collages |
 | `project-01..03.jpg` | Project screenshot clusters |
 | `ig-victory-*.jpg`, `ig-ridemagic-*.jpg`, `ig-mithra-*.jpg` | Instagram phone screenshots stacked on each project page |
-| `ig-stiya-profile.jpg` | @stiya.t_j profile phone in the contact section |
-| `reel-01-1..3.mp4`, `reel-02-1..6.mp4`, `reel-03-1..4.mp4` | Reel videos (hover to play, click for sound). 720×1280 H.264 CRF 20, re-encoded from the originals |
+| `ig-stiya-profile.jpg` | @stiya.t_j profile phone on the contact details page |
+| `reel-01-1..3.mp4`, `reel-02-1..4.mp4`, `reel-03-1..4.mp4` | Reel videos (hover to play, click for sound). 720×1280 H.264 CRF 20, re-encoded from the originals |
 | `reel-*.jpg` | Poster frames for the reel videos |
 | `podcast-01..02.jpg` | Podcast thumbnails |
-| `work-01..06.jpg` | Works I Did collage |
+| `work-01..08.jpg` | Works I Did collage (p18) and row (p19) |
 
 ## Structure
 
-- `index.html` — deck order: cover · content · introduce · about · work experience · stats · my experience · projects · project 01–03 · podcast · works · contact · thank you
+- `index.html` — deck order: cover · content · introduce · about · work experience · stats · my experience · projects · project 01–03 · podcast · works · contact · thank you · details
 - `css/style.css` — design tokens, layout, animations
 - `js/main.js` — cursor, tooltips, tilt, reveal, counters, nav, copy-to-clipboard
