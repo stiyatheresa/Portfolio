@@ -559,328 +559,320 @@ body[data-nav="cream"] .nav__cta { box-shadow: 0 6px 0 var(--blue); }
   .cursor { display: none; }
 }
 
-/* ======================================
-   PHOTO-LED CREATIVE HERO REDESIGN
-   ====================================== */
+/* =========================================
+   SCROLL ANIMATION — HERO SECTION
+   ========================================= */
 
-.hero--photo {
-  min-height: 100svh;
-  height: auto;
-  padding: 110px 6vw 75px;
-  overflow: hidden;
-}
+#hero {
+  --scroll-progress: 0;
 
-.hero--photo .hero-photo__stage {
-  width: min(100%, 1440px);
-  min-height: 590px;
-  height: auto;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  align-items: center;
-  gap: clamp(25px, 5vw, 80px);
-  position: relative;
-  padding: 35px 4%;
-}
-
-/* Decorative outline */
-.hero--photo .frame {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* Left side */
-.hero-photo__content {
-  position: relative;
-  z-index: 3;
-  min-width: 0;
-  padding: 30px 0;
-}
-
-.hero-photo__eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 28px;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 10px;
-  letter-spacing: .12em;
-  line-height: 1.7;
-}
-
-.hero-photo__status {
-  width: 8px;
-  height: 8px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: #d5ff43;
-}
-
-.hero--photo .hero-photo__title {
-  position: relative;
-  width: 100%;
-  margin: 0;
-  font-size: clamp(65px, 9vw, 125px);
-  line-height: .91;
-  letter-spacing: -.065em;
-  text-align: left;
-}
-
-.hero--photo .hero-photo__title .hero__line {
+  /* Give the hero enough scroll space */
+  height: 200svh;
+  min-height: 200svh;
+  min-height: 200vh;
+  padding: 0;
   display: block;
-  width: 100%;
-}
 
-.hero--photo .hero-photo__title .hero__word {
-  white-space: normal;
-}
-
-.hero--photo .hero-photo__title .hero-photo__name {
-  color: #d5ff43;
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-  font-weight: 400;
-}
-
-.hero-photo__intro {
-  max-width: 420px;
-  margin: 27px 0 0;
-  font-size: clamp(14px, 1.3vw, 17px);
-  line-height: 1.8;
-}
-
-.hero-photo__actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 24px;
-  margin-top: 28px;
-}
-
-.hero-photo__actions .pill {
+  /* Sticky elements cannot work inside overflow:hidden */
+  overflow: clip;
+  overflow: visible;
   position: relative;
-  z-index: 4;
-  text-decoration: none;
 }
 
-.hero-photo__contact {
-  color: inherit;
-  font-size: 13px;
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  padding: 10px 0;
+/* Keep the hero artwork in view while scrolling */
+#hero .hero__stage {
+  position: sticky;
+  top: 0;
+
+  width: min(100%, 1000px);
+  height: 100svh;
+  min-height: 500px;
+  aspect-ratio: auto;
+
+  margin-inline: auto;
+  overflow: hidden;
+  isolation: isolate;
 }
 
-.hero-photo__keywords {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 45px;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 9px;
-  letter-spacing: .07em;
+/* Keep the frame animated, then gently fade it */
+#hero .frame {
+  transform: scale(
+    calc(1 - var(--scroll-progress) * 0.12)
+  );
+  opacity: calc(1 - var(--scroll-progress) * 0.65);
 }
 
-.hero-photo__keywords span:nth-child(even) {
-  color: #d5ff43;
+/* Move and shrink the big portfolio text */
+#hero .hero__title {
+  transform:
+    translateY(calc(-52% - var(--scroll-progress) * 100px))
+    scale(calc(1 - var(--scroll-progress) * 0.3));
+
+  opacity: calc(1 - var(--scroll-progress) * 0.8);
+  transform-origin: center center;
+  will-change: transform, opacity;
 }
 
-/* Right side: portrait */
-.hero-photo__visual {
+/* Move the portrait in the opposite direction */
+#hero .blob {
+  translate:
+    calc(var(--scroll-progress) * -65px)
+    calc(var(--scroll-progress) * -100px);
+
+  scale: calc(1 - var(--scroll-progress) * 0.12);
+  will-change: translate, scale;
+}
+
+/* Move the yellow name tag down and fade it */
+#hero .hero__name {
+  translate: 0 calc(var(--scroll-progress) * 70px);
+  opacity: calc(1 - var(--scroll-progress));
+}
+
+/* Move the seal */
+#hero .seal {
+  translate:
+    calc(var(--scroll-progress) * 50px)
+    calc(var(--scroll-progress) * -65px);
+
+  rotate: calc(var(--scroll-progress) * 70deg);
+}
+
+/* Move the scallop in another direction */
+#hero .hero__scallop {
+  translate:
+    calc(var(--scroll-progress) * -50px)
+    calc(var(--scroll-progress) * 45px);
+
+  rotate: calc(var(--scroll-progress) * -15deg);
+}
+
+/* Let the sparkles drift as the page moves */
+#hero .hero__sp1 {
+  translate:
+    calc(var(--scroll-progress) * -55px)
+    calc(var(--scroll-progress) * 65px);
+
+  rotate: calc(var(--scroll-progress) * 100deg);
+}
+
+#hero .hero__sp2 {
+  translate:
+    calc(var(--scroll-progress) * 55px)
+    calc(var(--scroll-progress) * -45px);
+
+  rotate: calc(var(--scroll-progress) * -100deg);
+}
+
+/* Hide the scroll prompt as the hero moves away */
+#hero .hero__scroll {
+  opacity: calc(0.8 * (1 - var(--scroll-progress)));
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  #hero {
+    height: 170svh;
+    min-height: 170svh;
+  }
+
+  #hero .hero__stage {
+    width: 100%;
+    min-height: 0;
+    height: 100svh;
+  }
+
+  #hero .hero__title {
+    transform:
+      translateY(calc(-38% - var(--scroll-progress) * 55px))
+      scale(calc(1 - var(--scroll-progress) * 0.2));
+  }
+
+  #hero .blob {
+    translate:
+      calc(var(--scroll-progress) * -20px)
+      calc(var(--scroll-progress) * -55px);
+  }
+}
+
+/* Respect visitors who prefer less animation */
+@media (prefers-reduced-motion: reduce) {
+  #hero .hero__title,
+  #hero .blob,
+  #hero .frame,
+  #hero .seal,
+  #hero .hero__scallop,
+  #hero .hero__name,
+  #hero .hero__sp1,
+  #hero .hero__sp2,
+  #hero .hero__scroll {
+    will-change: auto;
+  }
+}
+
+/* ==========================================
+   SCROLL-DRIVEN HERO
+   Add at the very bottom of your CSS file
+   ========================================== */
+
+#hero.hero {
+  height: 200svh;
+  min-height: 200svh;
+  min-height: 200vh;
+  padding: 0;
+  display: block;
   position: relative;
-  width: 100%;
-  max-width: 470px;
-  justify-self: end;
-  padding: 0 20px 25px 0;
-  z-index: 2;
-}
-
-.hero--photo .hero-photo__blob {
-  position: relative;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  margin: 0;
-  transform: rotate(2deg);
   overflow: visible;
 }
 
-.hero--photo .hero-photo__blob .blob__inner {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  border-radius: 48% 48% 3px 3px;
-  background: #f8f4e9;
-  box-shadow: 17px 17px 0 rgba(12, 25, 110, .22);
+#hero .hero__stage {
+  position: sticky;
+  top: 0;
+  width: min(100%, 1000px);
+  height: 100svh;
+  min-height: 540px;
+  aspect-ratio: auto;
+  margin-inline: auto;
+  overflow: visible;
 }
 
-.hero--photo .hero-photo__blob img {
+/* Title moves up and shrinks */
+#hero .hero__title {
+  transform:
+    translateY(calc(-52% - var(--scroll-progress, 0) * 65px))
+    scale(calc(1 - var(--scroll-progress, 0) * 0.16));
+}
+
+/* Photo grows and moves */
+#hero .blob {
+  translate:
+    calc(var(--scroll-progress, 0) * 90px)
+    calc(var(--scroll-progress, 0) * -70px);
+  scale: calc(1 + var(--scroll-progress, 0) * 0.25);
+  rotate: calc(var(--scroll-progress, 0) * -18deg);
+}
+
+/* Frame zooms out */
+#hero .frame {
+  scale: calc(1 - var(--scroll-progress, 0) * 0.14);
+  opacity: calc(1 - var(--scroll-progress, 0) * 0.45);
+}
+
+/* Sparkles travel in opposite directions */
+#hero .hero__sp1 {
+  translate:
+    calc(var(--scroll-progress, 0) * -75px)
+    calc(var(--scroll-progress, 0) * -70px);
+  rotate: calc(var(--scroll-progress, 0) * 100deg);
+}
+
+#hero .hero__sp2 {
+  translate:
+    calc(var(--scroll-progress, 0) * 85px)
+    calc(var(--scroll-progress, 0) * 65px);
+  rotate: calc(var(--scroll-progress, 0) * -120deg);
+}
+
+/* Decorative badge moves away */
+#hero .seal {
+  translate:
+    calc(var(--scroll-progress, 0) * 75px)
+    calc(var(--scroll-progress, 0) * -65px);
+  rotate: calc(var(--scroll-progress, 0) * 75deg);
+}
+
+#hero .hero__scallop {
+  translate:
+    calc(var(--scroll-progress, 0) * -80px)
+    calc(var(--scroll-progress, 0) * 65px);
+  rotate: calc(var(--scroll-progress, 0) * 22deg);
+}
+
+/* Name label moves down and fades */
+#hero .hero__name {
+  translate: 0 calc(var(--scroll-progress, 0) * 90px);
+  opacity: calc(1 - var(--scroll-progress, 0));
+}
+
+/* Scroll indicator */
+#hero .hero__scroll {
+  position: absolute;
+  top: calc(100svh - 45px);
+  bottom: auto;
+  right: var(--gutter);
+  z-index: 5;
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  #hero.hero {
+    height: 175svh;
+    min-height: 175svh;
+  }
+
+  #hero .hero__stage {
+    min-height: 540px;
+  }
+
+  #hero .hero__title {
+    transform:
+      translateY(calc(-52% - var(--scroll-progress, 0) * 35px))
+      scale(calc(1 - var(--scroll-progress, 0) * 0.1));
+  }
+
+  #hero .blob {
+    translate:
+      calc(var(--scroll-progress, 0) * 35px)
+      calc(var(--scroll-progress, 0) * -35px);
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  #hero.hero {
+    height: auto;
+    min-height: 100svh;
+    overflow: hidden;
+    padding: clamp(96px, 14vh, 140px) var(--gutter) 60px;
+    display: grid;
+    place-items: center;
+  }
+
+  #hero .hero__stage {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1000 / 560;
+  }
+}
+
+/* Cursor glow trail */
+.cursor-glow {
+  position: fixed;
+  inset: 0;
   width: 100%;
   height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center 30%;
-}
-
-.hero--photo .hero-photo__blob .blob__tri {
-  z-index: 2;
-}
-
-/* Floating graphic */
-.hero-photo__sticker {
-  position: absolute;
-  top: 10%;
-  right: -15px;
-  z-index: 4;
-  width: 115px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: #d5ff43;
-  color: #161616;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1.6;
-  transform: rotate(10deg);
-}
-
-.hero-photo__note {
-  position: absolute;
-  right: -10px;
-  bottom: 0;
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 16px;
-  background: #f8f4e9;
-  color: #161616;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 12px;
-  font-style: italic;
-  line-height: 1.5;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, .12);
-}
-
-.hero-photo__arrow {
-  color: #2447ff;
-  font-family: sans-serif;
-  font-size: 27px;
-}
-
-/* Keep decorative elements behind the main content */
-.hero--photo .hero__sp1,
-.hero--photo .hero__sp2,
-.hero--photo .seal {
-  z-index: 1;
   pointer-events: none;
+  z-index: 9998;
+  overflow: hidden;
 }
 
-/* Tablet */
-@media (max-width: 900px) {
-  .hero--photo {
-    padding: 105px 5vw 75px;
-  }
-
-  .hero--photo .hero-photo__stage {
-    grid-template-columns: 1fr .85fr;
-    gap: 25px;
-    padding: 25px 3%;
-  }
-
-  .hero--photo .hero-photo__title {
-    font-size: clamp(58px, 8vw, 82px);
-  }
-
-  .hero-photo__visual {
-    max-width: 380px;
-  }
-
-  .hero-photo__sticker {
-    width: 90px;
-    font-size: 9px;
-  }
-
-  .hero-photo__keywords {
-    gap: 7px;
-    font-size: 8px;
-  }
+.cursor-glow__line {
+  fill: none;
+  stroke: #f5e84f;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter:
+    drop-shadow(0 0 4px #f5e84f)
+    drop-shadow(0 0 10px rgba(245, 232, 79, 0.8))
+    drop-shadow(0 0 22px rgba(153, 226, 3, 0.45));
+  opacity: 0.9;
 }
 
-/* Mobile */
-@media (max-width: 640px) {
-  .hero--photo {
-    min-height: auto;
-    padding: 105px 5vw 75px;
-  }
-
-  .hero--photo .hero-photo__stage {
-    min-height: 0;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 40px;
-    padding: 25px 4%;
-  }
-
-  .hero-photo__content {
-    padding: 20px 0 0;
-  }
-
-  .hero-photo__eyebrow {
-    font-size: 9px;
-    margin-bottom: 23px;
-  }
-
-  .hero--photo .hero-photo__title {
-    font-size: clamp(58px, 14vw, 90px);
-  }
-
-  .hero-photo__intro {
-    margin-top: 23px;
-    font-size: 14px;
-  }
-
-  .hero-photo__actions {
-    gap: 18px;
-  }
-
-  .hero-photo__keywords {
-    margin-top: 32px;
-    font-size: 8px;
-  }
-
-  .hero-photo__visual {
-    width: 83%;
-    max-width: 360px;
-    justify-self: center;
-    padding-right: 15px;
-  }
-
-  .hero-photo__sticker {
-    width: 90px;
-    right: -16px;
-  }
-
-  .hero-photo__note {
-    right: -12px;
-    font-size: 11px;
-    padding: 10px 12px;
-  }
-
-  .hero--photo .hero__scroll {
-    bottom: 22px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero--photo .hero-photo__blob img {
-    transition: none;
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .cursor-glow {
+    display: none;
   }
 }
