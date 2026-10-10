@@ -12,7 +12,7 @@ python3 -m http.server 8080
 
 ## Images
 
-`about-1`, `about-2`, all `ig-*` screenshots and all reel videos/posters come from the originals folder (kept local, git-ignored). `strip-*`, `exp-*`, `work-*`, `podcast-*` and `hero-photo` are still low-res crops (596px source) from the Canva deck's public page previews. Replace any of them with the original file under the same name for a sharper site.
+`hero-photo`, `about-*`, `exp-*`, all `ig-*` screenshots, all reel and work videos/posters come from the originals folder (kept local, git-ignored). `strip-*` and `podcast-*` are still low-res crops (596px source) from the Canva deck's public page previews. Replace any of them with the original file under the same name for a sharper site.
 
 To re-encode reels from new originals (needs ffmpeg):
 
@@ -22,7 +22,7 @@ ffmpeg -i IN.MP4 -c:v libx264 -preset slow -crf 20 -profile:v high -pix_fmt yuv4
 
 | File(s) | Used for |
 |---------|----------|
-| `hero-photo.png` | Cover photo blob |
+| `hero-photo.jpg` | Cover photo blob |
 | `about-1..3.jpg` | About me collage |
 | `strip-1..4.jpg` | Experience image strip |
 | `exp-1..4.jpg` | My experience collages |
@@ -32,7 +32,7 @@ ffmpeg -i IN.MP4 -c:v libx264 -preset slow -crf 20 -profile:v high -pix_fmt yuv4
 | `reel-01-1..3.mp4`, `reel-02-1..4.mp4`, `reel-03-1..4.mp4` | Reel videos (hover to play, click for sound). 720×1280 H.264 CRF 20, re-encoded from the originals |
 | `reel-*.jpg` | Poster frames for the reel videos |
 | `podcast-01..02.jpg` | Podcast thumbnails |
-| `work-01..08.jpg` | Works I Did collage (p18) and row (p19) |
+| `work-01..09.mp4` + `work-01..09.jpg` | Works I Did videos (hover to play) and posters: collage (p18) and row (p19) |
 
 ## Structure
 

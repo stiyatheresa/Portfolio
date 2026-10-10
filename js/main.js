@@ -261,7 +261,7 @@
   });
 
   /* ---------- Reels: hover to play, global sound toggle (default on) ---------- */
-  const reels = $$(".reel[data-video]");
+  const reels = $$("[data-video]");
   const allVideos = reels.map((f) => $("video", f)).filter(Boolean);
   let soundOn = true;
   try { soundOn = localStorage.getItem("reelSound") !== "off"; } catch (_) {}
@@ -270,14 +270,14 @@
   const applySound = () => {
     allVideos.forEach((v) => {
       v.muted = !soundOn;
-      v.closest(".reel").classList.toggle("is-sound", soundOn);
+      v.closest("[data-video]").classList.toggle("is-sound", soundOn);
     });
     document.body.classList.toggle("reels-muted", !soundOn);
     try { localStorage.setItem("reelSound", soundOn ? "on" : "off"); } catch (_) {}
   };
   const stopReel = (v) => { v.pause(); try { v.currentTime = 0; } catch (_) {} };
   const playReel = async (v) => {
-    const fig = v.closest(".reel");
+    const fig = v.closest("[data-video]");
     allVideos.forEach((o) => { if (o !== v && !o.paused) stopReel(o); });
     v.muted = !soundOn;
     try {
@@ -319,7 +319,7 @@
     gestureSeen = true;
     if (!soundOn) return;
     allVideos.forEach((v) => {
-      const fig = v.closest(".reel");
+      const fig = v.closest("[data-video]");
       if (fig.classList.contains("is-blocked")) { fig.classList.remove("is-blocked"); v.muted = false; }
     });
   }, { capture: true });
