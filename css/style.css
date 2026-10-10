@@ -876,3 +876,136 @@ body[data-nav="cream"] .nav__cta { box-shadow: 0 6px 0 var(--blue); }
     display: none;
   }
 }
+
+/* =====================================
+   MOBILE RESPONSIVENESS FIX
+   ===================================== */
+
+@media (max-width: 768px) {
+
+  /* Prevent horizontal scrolling */
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  /* General section spacing */
+  .slide,
+  .page {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Hero section */
+  #hero.hero {
+    min-height: 100svh;
+    padding: 100px 18px 50px;
+  }
+
+  #hero .hero__stage {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1000 / 820;
+  }
+
+  #hero .hero__title {
+    max-width: 100%;
+    font-size: clamp(60px, 15vw, 110px);
+  }
+
+  #hero .blob {
+    width: clamp(140px, 43vw, 240px);
+    right: 2%;
+    top: 18%;
+  }
+
+  #hero .hero__scallop {
+    left: 0;
+    bottom: 12%;
+    max-width: 150px;
+  }
+
+  #hero .seal {
+    right: 5%;
+    top: 4%;
+  }
+
+  #hero .hero__name {
+    max-width: 90%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  #hero .hero__scroll {
+    right: 18px;
+  }
+
+  /* Images and videos */
+  img,
+  video {
+    max-width: 100%;
+  }
+
+  /* Responsive grids */
+  .grid,
+  .tiles,
+  .cards,
+  .services__grid,
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Prevent long text from overflowing */
+  h1,
+  h2,
+  h3,
+  p {
+    overflow-wrap: break-word;
+  }
+
+  /* Hide desktop-only cursor effects */
+  .cursor,
+  .cursor-glow {
+    display: none;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  /* Smaller phone screens */
+  .slide,
+  .page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #hero .hero__stage {
+    aspect-ratio: 1000 / 900;
+  }
+
+  #hero .hero__title {
+    font-size: clamp(48px, 15vw, 76px);
+  }
+
+  /* Stack common content grids */
+  .grid,
+  .tiles,
+  .cards,
+  .services__grid,
+  .project-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Keep decorative elements within the screen */
+  #hero .hero__scallop {
+    max-width: 125px;
+  }
+
+  #hero .hero__name {
+    font-size: 14px;
+  }
+
+}
