@@ -558,3 +558,329 @@ body[data-nav="cream"] .nav__cta { box-shadow: 0 6px 0 var(--blue); }
   body { cursor: auto; }
   .cursor { display: none; }
 }
+
+/* ======================================
+   PHOTO-LED CREATIVE HERO REDESIGN
+   ====================================== */
+
+.hero--photo {
+  min-height: 100svh;
+  height: auto;
+  padding: 110px 6vw 75px;
+  overflow: hidden;
+}
+
+.hero--photo .hero-photo__stage {
+  width: min(100%, 1440px);
+  min-height: 590px;
+  height: auto;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(25px, 5vw, 80px);
+  position: relative;
+  padding: 35px 4%;
+}
+
+/* Decorative outline */
+.hero--photo .frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Left side */
+.hero-photo__content {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+  padding: 30px 0;
+}
+
+.hero-photo__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 28px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  line-height: 1.7;
+}
+
+.hero-photo__status {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #d5ff43;
+}
+
+.hero--photo .hero-photo__title {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  font-size: clamp(65px, 9vw, 125px);
+  line-height: .91;
+  letter-spacing: -.065em;
+  text-align: left;
+}
+
+.hero--photo .hero-photo__title .hero__line {
+  display: block;
+  width: 100%;
+}
+
+.hero--photo .hero-photo__title .hero__word {
+  white-space: normal;
+}
+
+.hero--photo .hero-photo__title .hero-photo__name {
+  color: #d5ff43;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-photo__intro {
+  max-width: 420px;
+  margin: 27px 0 0;
+  font-size: clamp(14px, 1.3vw, 17px);
+  line-height: 1.8;
+}
+
+.hero-photo__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.hero-photo__actions .pill {
+  position: relative;
+  z-index: 4;
+  text-decoration: none;
+}
+
+.hero-photo__contact {
+  color: inherit;
+  font-size: 13px;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding: 10px 0;
+}
+
+.hero-photo__keywords {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 45px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .07em;
+}
+
+.hero-photo__keywords span:nth-child(even) {
+  color: #d5ff43;
+}
+
+/* Right side: portrait */
+.hero-photo__visual {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  justify-self: end;
+  padding: 0 20px 25px 0;
+  z-index: 2;
+}
+
+.hero--photo .hero-photo__blob {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  transform: rotate(2deg);
+  overflow: visible;
+}
+
+.hero--photo .hero-photo__blob .blob__inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 48% 48% 3px 3px;
+  background: #f8f4e9;
+  box-shadow: 17px 17px 0 rgba(12, 25, 110, .22);
+}
+
+.hero--photo .hero-photo__blob img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.hero--photo .hero-photo__blob .blob__tri {
+  z-index: 2;
+}
+
+/* Floating graphic */
+.hero-photo__sticker {
+  position: absolute;
+  top: 10%;
+  right: -15px;
+  z-index: 4;
+  width: 115px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #d5ff43;
+  color: #161616;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.6;
+  transform: rotate(10deg);
+}
+
+.hero-photo__note {
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 16px;
+  background: #f8f4e9;
+  color: #161616;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.5;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .12);
+}
+
+.hero-photo__arrow {
+  color: #2447ff;
+  font-family: sans-serif;
+  font-size: 27px;
+}
+
+/* Keep decorative elements behind the main content */
+.hero--photo .hero__sp1,
+.hero--photo .hero__sp2,
+.hero--photo .seal {
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .hero--photo {
+    padding: 105px 5vw 75px;
+  }
+
+  .hero--photo .hero-photo__stage {
+    grid-template-columns: 1fr .85fr;
+    gap: 25px;
+    padding: 25px 3%;
+  }
+
+  .hero--photo .hero-photo__title {
+    font-size: clamp(58px, 8vw, 82px);
+  }
+
+  .hero-photo__visual {
+    max-width: 380px;
+  }
+
+  .hero-photo__sticker {
+    width: 90px;
+    font-size: 9px;
+  }
+
+  .hero-photo__keywords {
+    gap: 7px;
+    font-size: 8px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .hero--photo {
+    min-height: auto;
+    padding: 105px 5vw 75px;
+  }
+
+  .hero--photo .hero-photo__stage {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    padding: 25px 4%;
+  }
+
+  .hero-photo__content {
+    padding: 20px 0 0;
+  }
+
+  .hero-photo__eyebrow {
+    font-size: 9px;
+    margin-bottom: 23px;
+  }
+
+  .hero--photo .hero-photo__title {
+    font-size: clamp(58px, 14vw, 90px);
+  }
+
+  .hero-photo__intro {
+    margin-top: 23px;
+    font-size: 14px;
+  }
+
+  .hero-photo__actions {
+    gap: 18px;
+  }
+
+  .hero-photo__keywords {
+    margin-top: 32px;
+    font-size: 8px;
+  }
+
+  .hero-photo__visual {
+    width: 83%;
+    max-width: 360px;
+    justify-self: center;
+    padding-right: 15px;
+  }
+
+  .hero-photo__sticker {
+    width: 90px;
+    right: -16px;
+  }
+
+  .hero-photo__note {
+    right: -12px;
+    font-size: 11px;
+    padding: 10px 12px;
+  }
+
+  .hero--photo .hero__scroll {
+    bottom: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero--photo .hero-photo__blob img {
+    transition: none;
+  }
+}
